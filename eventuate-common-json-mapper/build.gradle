@@ -1,6 +1,6 @@
 
 dependencies {
-    api project (":eventuate-common-id")
+    api "io.eventuate.common.id:eventuate-common-id:$eventuateCommonIdVersion"
 
     api "org.apache.commons:commons-lang3:$commonsLang3Version"
     testImplementation "org.hamcrest:hamcrest:$hamcrestVersion"
