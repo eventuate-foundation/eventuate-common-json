@@ -1,6 +1,36 @@
-= An Eventuate project
+= Eventuate Common JSON
 
 image::https://eventuate.io/i/logo.gif[]
 
 This project is part of http://eventuate.io[Eventuate], which is a microservices collaboration platform.
 
+It contains the JSON serialization that the other Eventuate projects use: `JSonMapper`, a shared Jackson `ObjectMapper` with Eventuate's settings, and `Int128Module`, which serializes the `Int128` IDs of https://github.com/eventuate-foundation/eventuate-common-id[eventuate-common-id].
+
+It publishes these artifacts under the group `io.eventuate.common.json`:
+
+|===
+| Artifact | Package | Contents
+
+| `eventuate-common-json-mapper`
+| `io.eventuate.common.json.mapper`
+| `JSonMapper` and `Int128Module`
+
+| `eventuate-common-json-bom`
+|
+| The BOM for these artifacts
+|===
+
+Its version is set in a consumer's `gradle.properties` with the property `eventuateCommonJsonVersion`.
+
+== Migrating from eventuate-common
+
+These modules were previously published by https://github.com/eventuate-foundation/eventuate-common[eventuate-common] under the group `io.eventuate.common`.
+Each module declares the capability of its old coordinates, so a Gradle build that gets both the old and the new artifact fails with a capability conflict.
+
+The https://github.com/cer/openrewrite-recipes/blob/master/eventuate-common-split/README.adoc[migration guide] lists the new groups, version properties and packages, and describes the OpenRewrite recipe that migrates a consumer.
+
+== Building
+
+----
+./gradlew build
+----
